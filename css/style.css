@@ -1,0 +1,61 @@
+html,body{margin:0;padding:0;}
+body{font-family:"HelveticaNeue",Helvetica,Arial;font-size:14px;line-height: 140%;}
+
+body,html{height:100%;}
+h1,h2{font-weight:300;color:#333;letter-spacing:-1px;}
+h3,h4,h5{color:#333;}
+a{text-decoration:none;color:#398bce;}
+a:hover{color:#256396;}
+pre{background:#f8f8f8;border:1px solid #ccc;padding:15px;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;color:#333;}
+
+h1{font-weight: 300;}
+h1,h2,h3,h4,h5 {line-height:140%;}
+input,button{font-family: inherit;cursor: pointer;}
+
+.button-normal {border: 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; font-size: 18px; font-weight: 400; padding: 20px 40px; text-decoration: none; background: #398bce; color: #fff; }
+.button-normal:hover {background: #2d6ea3; }
+.button-normal:disabled{background-color: #aed1f2;}
+
+.button-alternate {border: 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; font-size: 18px; font-weight: 400; padding: 20px 40px; text-decoration: none; background: #999; color: #fff; }
+.button-alternate:hover {background: #666; color: #fff; }
+
+.button-create {border: 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; font-size: 18px; font-weight: 400; padding: 20px 40px; text-decoration: none; background: #7dc36b; color: #fff; }
+.button-create:hover {background: #5eb348; color: #fff; }
+.button-create:disabled{background-color: #b5dcb4;}
+
+#dataTable{margin-bottom: 1em;font-size:12px;}
+
+#main{margin:40px auto;width:1020px;}
+.clear{clear: both;}
+
+.leftcol{float:left;width:400px;}
+.rightcol{float:left;width:620px;}
+.box{margin:20px;}
+
+#loadData{margin-bottom: 40px;}
+#params{margin-top:40px;width:400px;}
+#params td.label{width:100px;text-align: right;padding-right: 15px;}
+#params td.inp{width:150px;}
+#params td.val{width:100px;}
+#params td{padding:5px;}
+#params th{border-top: 1px solid #CCC;border-bottom: 1px solid #CCC;padding: 10px 0;}
+
+ul#menu, ul#menu ul.sub-menu {padding:0;margin:0;}
+ul#menu li, ul#menu ul.sub-menu li {list-style-type: none; display: inline-block; }
+/*Make the parent of sub-menu relative*/
+ul#menu li {position: relative; }
+/*sub menu*/
+ul#menu li ul.sub-menu {display:none; position: absolute; top: 30px; left: 0; width: 140px;}
+ul#menu li:hover ul.sub-menu {display:block; }
+/*Link Appearance*/
+ul#menu{margin:20px 20px;border-bottom: 1px solid #DDD;}
+ul#menu li.active a{background-color: #f5f5f5;color: #398bce;}
+ul#menu li a, ul#menu li ul.sub-menu li a {text-decoration:none;background: #FFF;color: #666;padding:10px 15px;display:inline-block;}
+ul#menu li a:hover, ul#menu li ul.sub-menu li a:hover{background-color: #f5f5f5;color: #398bce;}
+ul#menu li ul.sub-menu, ul#menu li ul.sub-menu li a{background-color: #f5f5f5;z-index: 10;}
+
+.tab{display:none;}
+
+#notes{display:block;background-color:#fff;color:#666;margin:0 auto 10px;width:90%;font-family:inherit;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;font-size:16px;padding:20px;margin-top:40px;border-color: #b7b7b7;}
+
+input[type=text]{-webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; font-size: 16px; padding: 10px; border:1px solid #b7b7b7; background-color: #fff; color: #666; margin: 0 auto 10px; }

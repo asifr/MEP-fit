@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MEP Analysis</title>
+	<link rel="stylesheet" type="text/css" href="./css/radian.css">
+	<link rel="stylesheet" type="text/css" href="./css/jquery.handsontable.full.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+
+<div id="main" ng-app="nlinlsmin">
+<ul id="menu">
+	<li class="active"><a href="#regress">MEP Analysis</a></li>
+	<li><a href="#about">About</a></li>
+	<li><a href="#terms">Terms</a></li>
+</ul>
+
+<div id="regress" class="tab" style="display:block;" ng-controller="RegressionController">
+<div class="leftcol">
+<div class="box">
+	<div id="loadData">
+		<p>Load sample data: <select ng-model="selectedSampleData" ng-options="obj.name for obj in sampleData" ng-change="updateUsingSampleData()"></select></p>
+	</div>
+	<div id="table">
+		<div id="dataTable"></div>
+		<p>
+			<input type="submit" value="Run analysis" id="runButton" class="button-normal" ng-click="runAnalysis()" disabled="disabled">
+		</p>
+	</div>
+</div>
+</div>
+
+<div class="rightcol">
+<div class="box">
+	<plot height=200 aspect=2 axis-x-label="Stimulus intensity (%)" axis-y-label="MEP Amplitude (mV)">
+	<points x="[[X]]" y="[[Y]]" stroke="black" marker="circle" marker-size=25></points>
+	<lines x="[[Xi]]" y="[[Yhat]]" stroke="blue"></lines>
+	</plot>
+
+	<table id="params">
+		<thead>
+			<tr>
+				<th colspan="3">Parameters</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td class="label">Bottom</td>
+			<td class="inp"></td>
+			<td class="val">{{Params[0]}}</td>
+		</tr>
+		<tr>
+			<td class="label">Top</td>
+			<td><input type="range" min=0 max="{{topMax}}" step=0.01 ng-model="Params[1]" ng-init="Params[1]=0" ng-change="redrawYhat()"></td>
+			<td class="val">{{Params[1]}}</td>
+		</tr>
+		<tr>
+			<td class="label">S50</td>
+			<td><input type="range" min=0 max=100 step=1 ng-model="Params[2]" ng-init="Params[2]=0" ng-change="redrawYhat()"></td>
+			<td class="val">{{Params[2]}}</td>
+		</tr>
+		<tr>
+			<td class="label">Slope</td>
+			<td><input type="range" min=0 max=1 step=0.001 ng-model="Params[3]" ng-init="Params[3]=0" ng-change="redrawYhat()"></td>
+			<td class="val">{{Params[3]}}</td>
+		</tr>
+		<tr>
+			<td class="label">R<sup>2</sup></td>
+			<td>{{rsquared}}</td>
+			<td class="val"></td>
+		</tr>
+		<tr>
+			<td class="label">Threshold intensity</td>
+			<td><input type="text" id="threshold" value="0.05" placeholder="Amplitude" size="5"> mV</td>
+			<td class="val" id="thresholdIntensityValue"></td>
+		</tr>
+		</tbody>
+	</table>
+
+	<textarea id="notes" placeholder="Notes" rows="10"></textarea>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+
+<div id="about" class="tab">
+<div class="box">
+	<h1>About</h1>
+	<p>The MEP Analysis tool performs parameter estimation on measured/empirical recruitment curves.</p>
+
+	<p><img src="./images/sigmoid.png" width="400px"></p>
+
+	<h2>Parameter estimation</h2>
+	<p>The tool uses standard nonlinear optimization techniques to estimate the best parameters. A derivative free optimization algorithm (COBYLA: Constrained Optimization BY Linear Approximations) is used to minimize the residual errors and achieve a best estimate for the parameters.</p>
+</div>
+</div>
+
+<div id="terms" class="tab">
+<div class="box">
+	<h1>Terms of Use</h1>
+	<p>This tool is provided as is with no guarantees.</p>
+	<p>Browsing and using the tool at http://asifr.com/mepfit is at the user's own risk. We make no representations, warranties or guarantees of any kind or nature regarding the content or accuracy of the information accessible on http://asifr.com/mepfit.</p>
+	<p>To the fullest extent permissible pursuant to applicable federal, state and local laws, http://asifr.com/mepfit, its developers, and any party involved in its creation, maintenance, or modification, disclaim and shall not be liable for any damages, including, but not limited to, direct, indirect, incidental, consequential, punitive damages, attorneys' fees or costs arising out of or related to access to or use of http://asifr.com/mepfit. Links are provided as a convenience only, and http://asifr.com/mepfit makes no representations, warranties or guarantees regarding their contents.</p>
+	<p>Please email the http://asifr.com/mepfit Administrator at asiftr@gmail.com for any clarifications, questions, suggestions, and comments. Thank you for your support and cooperation.</p>
+</div>
+</div>
+
+</div>
+
+<script type="text/javascript" src="./js/radian/lib/jquery.js"></script>
+<script type="text/javascript" src="./js/radian/lib/jquery.csv.js"></script>
+<script type="text/javascript" src="./js/radian/lib/escodegen.browser.js"></script>
+<script type="text/javascript" src="./js/radian/lib/d3.v2.js"></script>
+<script type="text/javascript" src="./js/radian/lib/angular/angular.js"></script>
+<script type="text/javascript" src="./js/radian/radian.js"></script>
+<script type="text/javascript" src="./js/jquery.handsontable.full.js"></script>
+<script type="text/javascript" src="./js/Cobyla.js"></script>
+<script type="text/javascript" src="./js/app.js"></script>
+
+</body>
+</html>
